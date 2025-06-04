@@ -1,5 +1,11 @@
-from pydantic import BaseModel
+from sqlalchemy import Table, Column, Integer, String, MetaData
+from .database import database
 
-class Todo(BaseModel):
-    id: int
-    task: str
+metadata = MetaData()
+
+todo_table=Table(
+    "todo",
+    metadata,
+    Column("id", Integer, primary_key=True),
+    Column("task", String, nullable=False)
+)
